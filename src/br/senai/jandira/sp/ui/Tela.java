@@ -1,5 +1,7 @@
 package br.senai.jandira.sp.ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,8 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
+
 
 import br.senai.jandira.sp.model.Tabuada;
 
@@ -29,7 +32,7 @@ public class Tela {
 
 		JLabel lblMultiplicando = new JLabel();
 		lblMultiplicando.setText("Multiplicando: ");
-		lblMultiplicando.setBounds(50, 90, 150, 30);
+		lblMultiplicando.setBounds(90, 90, 150, 30);
 
 		JLabel lblMultiplicador = new JLabel();
 		lblMultiplicador.setText("Máximo multiplicador: ");
@@ -38,9 +41,10 @@ public class Tela {
 		JLabel lblResultado = new JLabel();
 		lblResultado.setText("Resultado: ");
 		lblResultado.setBounds(300, 80, 100, 30);
+		lblResultado.setForeground(Color.BLUE);
 
 		JTextField txtMultiplicando = new JTextField();
-		txtMultiplicando.setBounds(150, 90, 50, 30);
+		txtMultiplicando.setBounds(200, 90, 50, 30);
 
 		JTextField txtMultiplicador = new JTextField();
 		txtMultiplicador.setBounds(200, 130, 50, 30);
@@ -48,10 +52,25 @@ public class Tela {
 		JButton btnCalcular = new JButton();
 		btnCalcular.setText("Calcular");
 		btnCalcular.setBounds(20, 190, 200, 50);
+		btnCalcular.setBackground(Color.RED);
+		btnCalcular.setFont(new Font("Times new roman", Font.BOLD, 25));
+		btnCalcular.setForeground(Color.WHITE);
 		
 		JButton btnLimpar = new JButton();
 		btnLimpar.setText("Limpar");
 		btnLimpar.setBounds(20, 250, 200, 50);
+		btnLimpar.setBackground(Color.GREEN);	
+		btnLimpar.setFont(new Font("Times new roman", Font.BOLD, 25));
+		btnLimpar.setForeground(Color.WHITE);
+		
+		
+		
+		DefaultListModel<String> listModel = new DefaultListModel<>();
+		JList<String> list = new JList<>(listModel);
+		list.setBounds(300, 150, 200, 200);
+		
+		JScrollPane listResultados = new JScrollPane(list);
+		listResultados.setBounds(300, 150, 200, 200);
 
 		minhaTela.getContentPane().add(lblTabuada);
 		minhaTela.getContentPane().add(lblMultiplicando);
@@ -61,6 +80,7 @@ public class Tela {
 		minhaTela.getContentPane().add(txtMultiplicador);
 		minhaTela.getContentPane().add(btnCalcular);
 		minhaTela.getContentPane().add(btnLimpar);
+		minhaTela.getContentPane().add(listResultados);
 
 		btnCalcular.addActionListener(new ActionListener() {
 
@@ -73,15 +93,12 @@ public class Tela {
 				int multiplicador = Integer.parseInt(txtMultiplicador.getText());
 				int contador = 0;
 
-				DefaultListModel listModel = new DefaultListModel();
-				JList list = new JList(listModel);
+				
 
 				for (contador = 0; contador <= multiplicador; contador++) {
 					tabuada.Calcular(multiplicando, contador);
 					listModel.addElement(multiplicando + " X " + contador + " = "+tabuada.getCalcular());
-					list.setBounds(300, 150, 200, 200);
 
-					minhaTela.getContentPane().add(list);
 				}
 
 			}
@@ -92,6 +109,9 @@ public class Tela {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
+				listModel.clear();
+				list.setModel(listModel);
+				txtMultiplicando.grabFocus();
 			}
 		});
 
