@@ -28,7 +28,9 @@ public class Tela {
 
 		JLabel lblTabuada = new JLabel();
 		lblTabuada.setText("Tabuada");
-		lblTabuada.setBounds(100, 30, 100, 30);
+		lblTabuada.setBounds(100, 30, 200, 30);
+		lblTabuada.setForeground(Color.LIGHT_GRAY);
+		lblTabuada.setFont(new Font("Times new roman" , Font.BOLD, 45));
 
 		JLabel lblMultiplicando = new JLabel();
 		lblMultiplicando.setText("Multiplicando: ");
@@ -41,7 +43,7 @@ public class Tela {
 		JLabel lblResultado = new JLabel();
 		lblResultado.setText("Resultado: ");
 		lblResultado.setBounds(300, 80, 100, 30);
-		lblResultado.setForeground(Color.BLUE);
+		lblResultado.setForeground(Color.GREEN);
 
 		JTextField txtMultiplicando = new JTextField();
 		txtMultiplicando.setBounds(200, 90, 50, 30);
@@ -67,10 +69,10 @@ public class Tela {
 		
 		DefaultListModel<String> listModel = new DefaultListModel<>();
 		JList<String> list = new JList<>(listModel);
-		list.setBounds(300, 150, 200, 200);
+		list.setBounds(300, 120, 200, 200);
 		
 		JScrollPane listResultados = new JScrollPane(list);
-		listResultados.setBounds(300, 150, 200, 200);
+		listResultados.setBounds(300, 120, 200, 200);
 
 		minhaTela.getContentPane().add(lblTabuada);
 		minhaTela.getContentPane().add(lblMultiplicando);
@@ -81,7 +83,9 @@ public class Tela {
 		minhaTela.getContentPane().add(btnCalcular);
 		minhaTela.getContentPane().add(btnLimpar);
 		minhaTela.getContentPane().add(listResultados);
-
+		minhaTela.getContentPane().setBackground(Color.YELLOW);
+		
+		
 		btnCalcular.addActionListener(new ActionListener() {
 
 			@Override
