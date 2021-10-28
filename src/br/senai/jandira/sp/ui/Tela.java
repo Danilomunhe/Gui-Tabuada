@@ -13,7 +13,6 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-
 import br.senai.jandira.sp.model.Tabuada;
 
 public class Tela {
@@ -30,7 +29,7 @@ public class Tela {
 		lblTabuada.setText("Tabuada");
 		lblTabuada.setBounds(100, 30, 200, 30);
 		lblTabuada.setForeground(Color.LIGHT_GRAY);
-		lblTabuada.setFont(new Font("Times new roman" , Font.BOLD, 45));
+		lblTabuada.setFont(new Font("Times new roman", Font.BOLD, 45));
 
 		JLabel lblMultiplicando = new JLabel();
 		lblMultiplicando.setText("Multiplicando: ");
@@ -57,20 +56,18 @@ public class Tela {
 		btnCalcular.setBackground(Color.RED);
 		btnCalcular.setFont(new Font("Times new roman", Font.BOLD, 25));
 		btnCalcular.setForeground(Color.WHITE);
-		
+
 		JButton btnLimpar = new JButton();
 		btnLimpar.setText("Limpar");
 		btnLimpar.setBounds(20, 250, 200, 50);
-		btnLimpar.setBackground(Color.GREEN);	
+		btnLimpar.setBackground(Color.GREEN);
 		btnLimpar.setFont(new Font("Times new roman", Font.BOLD, 25));
 		btnLimpar.setForeground(Color.WHITE);
-		
-		
-		
+
 		DefaultListModel<String> listModel = new DefaultListModel<>();
 		JList<String> list = new JList<>(listModel);
 		list.setBounds(300, 120, 200, 200);
-		
+
 		JScrollPane listResultados = new JScrollPane(list);
 		listResultados.setBounds(300, 120, 200, 200);
 
@@ -84,8 +81,7 @@ public class Tela {
 		minhaTela.getContentPane().add(btnLimpar);
 		minhaTela.getContentPane().add(listResultados);
 		minhaTela.getContentPane().setBackground(Color.YELLOW);
-		
-		
+
 		btnCalcular.addActionListener(new ActionListener() {
 
 			@Override
@@ -93,28 +89,24 @@ public class Tela {
 
 				Tabuada tabuada = new Tabuada();
 
-				int multiplicando = Integer.parseInt(txtMultiplicando.getText());
-				int multiplicador = Integer.parseInt(txtMultiplicador.getText());
-				int contador = 0;
+				tabuada.setMultiplicando(txtMultiplicando.getText());
+				tabuada.getMultiplicando();
+				tabuada.setMultiplicador(txtMultiplicador.getText());
 
-				
-
-				for (contador = 0; contador <= multiplicador; contador++) {
-					tabuada.Calcular(multiplicando, contador);
-					listModel.addElement(multiplicando + " X " + contador + " = "+tabuada.getCalcular());
+				for (int contador = 0; contador <= tabuada.getMultiplicador(); contador++) {
+					tabuada.setCalcular(tabuada.getMultiplicando(), contador);
+					listModel.addElement(tabuada.getMultiplicando() + " X " + contador + " = " + tabuada.getCalcular());
 
 				}
-
 			}
 		});
-		
+
 		btnLimpar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
-				listModel.clear();
-				list.setModel(listModel);
+
+			    listModel.removeAllElements();
 				txtMultiplicando.grabFocus();
 			}
 		});
