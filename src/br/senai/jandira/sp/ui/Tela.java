@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import br.senai.jandira.sp.model.Tabuada;
+
 
 public class Tela {
 
@@ -29,16 +32,24 @@ public class Tela {
 		minhaTela.setLayout(null);
 
 		JPanel header = new JPanel();
-		header.setBounds(0, 0, 600, 75);
+		header.setBounds(0, 0, 600, 85);
 		header.setLayout(null);
-		header.setBackground(Color.BLUE);
+		header.setBackground(Color.white);
+		
+		Icon icon = new ImageIcon(getClass().getResource("../Images/calculadora.png"));
+		
+		JLabel lblCalculadora = new JLabel();
+		lblCalculadora.setIcon(icon);
+		lblCalculadora.setBounds(350, 10, 150, 70);
 		
 		JLabel lblTabuada = new JLabel();
 		lblTabuada.setText("Tabuada");
-		lblTabuada.setBounds(200, 20, 200, 30);
-		lblTabuada.setForeground(Color.WHITE);
+		lblTabuada.setBounds(50, 20, 200, 30);
+		lblTabuada.setForeground(Color.BLACK);
 		lblTabuada.setFont(new Font("Times new roman", Font.BOLD, 45));
 
+
+		
 		JLabel lblMultiplicando = new JLabel();
 		lblMultiplicando.setText("Multiplicando: ");
 		lblMultiplicando.setBounds(90, 90, 150, 30);
@@ -82,8 +93,8 @@ public class Tela {
 		listResultados.setBounds(300, 120, 200, 200);
 
 		header.add(lblTabuada);
+		header.add(lblCalculadora);
 		minhaTela.getContentPane().add(header);
-		//minhaTela.getContentPane().add(lblTabuada);
 		minhaTela.getContentPane().add(lblMultiplicando);
 		minhaTela.getContentPane().add(lblMultiplicador);
 		minhaTela.getContentPane().add(lblResultado);
