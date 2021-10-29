@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
@@ -19,25 +20,34 @@ public class Tela {
 
 	public void criarTela() {
 
+
+		
 		JFrame minhaTela = new JFrame();
 		minhaTela.setSize(600, 600);
 		minhaTela.setTitle("Tabuada");
 		minhaTela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		minhaTela.setLayout(null);
 
+		JPanel header = new JPanel();
+		header.setBounds(0, 0, 600, 75);
+		header.setLayout(null);
+		header.setBackground(Color.BLUE);
+		
 		JLabel lblTabuada = new JLabel();
 		lblTabuada.setText("Tabuada");
-		lblTabuada.setBounds(100, 30, 200, 30);
-		lblTabuada.setForeground(Color.LIGHT_GRAY);
+		lblTabuada.setBounds(200, 20, 200, 30);
+		lblTabuada.setForeground(Color.WHITE);
 		lblTabuada.setFont(new Font("Times new roman", Font.BOLD, 45));
 
 		JLabel lblMultiplicando = new JLabel();
 		lblMultiplicando.setText("Multiplicando: ");
 		lblMultiplicando.setBounds(90, 90, 150, 30);
+		lblMultiplicando.setForeground(Color.GREEN);
 
 		JLabel lblMultiplicador = new JLabel();
 		lblMultiplicador.setText("Máximo multiplicador: ");
 		lblMultiplicador.setBounds(50, 130, 150, 30);
+		lblMultiplicador.setForeground(Color.GREEN);
 
 		JLabel lblResultado = new JLabel();
 		lblResultado.setText("Resultado: ");
@@ -71,7 +81,9 @@ public class Tela {
 		JScrollPane listResultados = new JScrollPane(list);
 		listResultados.setBounds(300, 120, 200, 200);
 
-		minhaTela.getContentPane().add(lblTabuada);
+		header.add(lblTabuada);
+		minhaTela.getContentPane().add(header);
+		//minhaTela.getContentPane().add(lblTabuada);
 		minhaTela.getContentPane().add(lblMultiplicando);
 		minhaTela.getContentPane().add(lblMultiplicador);
 		minhaTela.getContentPane().add(lblResultado);
@@ -80,7 +92,7 @@ public class Tela {
 		minhaTela.getContentPane().add(btnCalcular);
 		minhaTela.getContentPane().add(btnLimpar);
 		minhaTela.getContentPane().add(listResultados);
-		minhaTela.getContentPane().setBackground(Color.YELLOW);
+		minhaTela.getContentPane().setBackground(Color.BLACK);
 
 		btnCalcular.addActionListener(new ActionListener() {
 
