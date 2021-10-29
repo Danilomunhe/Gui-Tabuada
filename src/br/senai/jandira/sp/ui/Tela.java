@@ -120,6 +120,8 @@ public class Tela {
 
 			    listModel.removeAllElements();
 				txtMultiplicando.grabFocus();
+				txtMultiplicador.setText(null);
+				txtMultiplicando.setText(null);
 			}
 		});
 
